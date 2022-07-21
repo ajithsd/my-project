@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Users;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::view("about",'about');
+Route::get("users",[Users::class,'index']);

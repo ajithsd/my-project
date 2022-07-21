@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 Route::view("about",'about');
 Route::get("users",[Users::class,'index']);
+Route::get("users/{id}",[Users::class,'userid']);
+Route::get("user-api",[Users::class,'userapi']);

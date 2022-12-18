@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ApicallController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +24,38 @@ Route::view("about",'about');
 Route::get("users",[Users::class,'index']);
 Route::get("users/{id}",[Users::class,'userid']);
 Route::get("user-api",[Users::class,'userapi']);
+Route::get("headcomp",[Users::class,'userwithheadcomp']);
+
+Route::get("customer",[CustomerController::class,'getCustomer']);
+
+Route::get("apicall",[ApicallController::class,'fetchapi']);
+
+
+Route::get('/login', function () {
+    if(session()->has('test_user_name'))
+    {
+        return redirect('profile');
+    }
+    else{
+        return view('login');
+    }
+});
+Route::post("logincheck",[LoginController::class,"logincheck"]);
+Route::get('/profile', function () {
+    if(session()->has('test_user_name'))
+    {
+        return view('profile');
+    }
+    else{
+        return view('login');
+    }
+    
+});
+Route::get('/logout', function () {
+    if(session()->has('test_user_name'))
+    {
+        session()->pull('test_user_name');
+        
+    }
+    return redirect('login');
+});

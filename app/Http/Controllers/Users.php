@@ -19,4 +19,9 @@ class Users extends Controller
     {
         return (['name'=>'ajith','id'=>25]);
     }
+    public function userwithheadcomp()
+    {
+        $data   =   ["ajith","salmisha","Alisha","Elna","Ebina"];    
+        return view('user',["values"=>$data]);
+    }
 }
